@@ -9,6 +9,7 @@ export default function Column({text, children}:ColumnProps){
         <div className="">
             <h1>{text}</h1>
             {children}
+            <p>added something herer</p>
         </div>
 
     )
