@@ -1,4 +1,7 @@
+'use client';
+
 import { useState } from "react"
+import NewItemForm from "./NewItemForm";
 
 type AddNewItemProps = {
     onAdd(text: string): void;
@@ -11,14 +14,24 @@ export default function AddNewItem(props:AddNewItemProps, ){
     const [showForm, setShowForm] = useState<boolean>(false)
     const {onAdd, toggleBtnText, dark} = props;
 
+
+     function handleAdd(text:string){
+            onAdd(text)
+            setShowForm(false);
+     }
     if (showForm){
+        return(
+            <NewItemForm
+             onAdd={handleAdd}
+            />
+        )
 
     }
     return (
-        <AddItemBtn 
-        dark={dark} 
+        <button 
+        // className={dark} 
         onClick={() => setShowForm(true)}>
             {toggleBtnText}
-        </AddItemBtn>
+        </button>
     )
 }
