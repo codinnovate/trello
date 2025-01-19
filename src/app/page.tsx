@@ -1,23 +1,22 @@
 import AddNewItem from "@/components/AddNewItem";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Column from "@/components/Column";
+import { useAppContext } from "@/contexts/app-context";
 
 export default function Home() {
+  const {lists} = useAppContext();
   return (
     <div className="flex">
-      <AddNewItem
+        {lists.map((list) => (
+          <Column
+          text={list.text}
+          id={list.id}
+          key={list.id}
+          />
+        ))}
+        <AddNewItem
        toggleBtnText="+ Add another list"
-      //  onAdd=''
-      />      
-      <div className="flex flex-grow bg-yellow-300 h-screen" >
-        upcoming tasks
-        </div>
-      <div className="flex flex-grow bg-green-300 h-screen" >
-        <h1>in Progress tasks</h1>
-        </div>
-      <div className="flex flex-grow bg-blue-400 h-screen" >
-        completed tasks
-        </div>
+       onAdd={console.log}
+      />  
     </div>
   );
 }

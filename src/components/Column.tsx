@@ -1,15 +1,30 @@
+import { useAppContext } from "@/contexts/app-context";
+import { ColumnProps } from "@/lib/types";
+import Card from "./Card";
+import AddNewItem from "./AddNewItem";
 
-type ColumnProps = {
-    text:string,
-    children:React.ReactNode
-}
+export default function Column({text, id}:ColumnProps){
+    const { getTasksByListId } = useAppContext();
+    const tasks = getTasksByListId(id); 
 
-export default function Column({text, children}:ColumnProps){
+    
     return (
         <div className="">
             <h1>{text}</h1>
-            {children}
-            <p>added something herer</p>
+
+            {tasks.map(task => (
+                <Card
+                 key={task.id}
+                 text={task.text}
+                 id={task.id}
+                 
+                 />
+            ))}
+           <AddNewItem
+            toggleBtnText="+ Add another task"
+            onAdd={console.log}
+            dark
+           />
         </div>
 
     )
