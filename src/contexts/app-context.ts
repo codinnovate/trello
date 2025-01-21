@@ -20,26 +20,28 @@ const appData: AppState = {
     ]
 };
 
-export const AppStateContext = createContext<AppContextProps | undefined>(undefined);
+const initialState = {
+    lists:[],
+    getTasksByListid(id: string): TaskProps[];
+}
+
+const AppStateContext = createContext<AppContextProps>(initialState);
 
 export default function AppStateProvider ({ children }:{children:React.ReactNode}) {
-    const { lists } = appData;
-    const getTasksByListid = (id: string): TaskProps[] => {
-        const list = lists.find(list => list.id === id);
-        return list ? list.tasks : []; 
-    };
+    // const { lists } = appData;
+    // const getTasksByListid = (id: string): TaskProps[] => {
+    //     const list = lists.find(list => list.id === id);
+    //     return list ? list.tasks : []; 
+    // };
 
     return (
-        <AppState.Provider
-         value = {{ 
-            lists, 
-            getTasksByListid }}>
+        <AppStateContext.Provider>
             {children}
-        </AppState.Provider>
+        </AppStateContext.Provider>
     );
 };
 
-export function useAppContext(){
+export  function useAppContext(){
     const context = useContext(AppStateContext);
     if (!context) {
         throw new Error("useAppContext must be used within an AppProvider");
