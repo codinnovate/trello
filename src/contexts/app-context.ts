@@ -43,6 +43,7 @@ export default function AppStateProvider ({ children }:{children:React.ReactNode
 
 export  function useAppContext(){
     const context = useContext(AppStateContext);
+    
     if (!context) {
         throw new Error("useAppContext must be used within an AppProvider");
     }
