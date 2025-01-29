@@ -28,11 +28,11 @@ const initialState = {
 const AppStateContext = createContext<AppContextProps>(initialState);
 
 export default function AppStateProvider ({ children }:{children:React.ReactNode}) {
-    // const { lists } = appData;
-    // const getTasksByListid = (id: string): TaskProps[] => {
-    //     const list = lists.find(list => list.id === id);
-    //     return list ? list.tasks : []; 
-    // };
+    const { lists } = appData;
+    const getTasksByListid = (id: string): TaskProps[] => {
+        const list = lists.find(list => list.id === id);
+        return list ? list.tasks : []; 
+    };
 
     return (
         <AppStateContext.Provider>
