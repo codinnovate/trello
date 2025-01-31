@@ -1,3 +1,5 @@
+'use client';
+
 import { AppContextProps, AppState, TaskProps, } from "@/lib/types";
 import { createContext, useContext } from "react";
 
