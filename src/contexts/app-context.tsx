@@ -24,7 +24,7 @@ const appData: AppState = {
 
 const initialState = {
     lists:[],
-    getTasksByListid(id: string): TaskProps[];
+    getTasksByListid(id: string): TaskProps
 }
 
 const AppStateContext = createContext<AppContextProps>(initialState);
@@ -37,7 +37,7 @@ export default function AppStateProvider ({ children }:{children:React.ReactNode
     };
 
     return (
-        <AppStateContext.Provider>
+        <AppStateContext.Provider value={{lists, getTasksByListid}}>
             {children}
         </AppStateContext.Provider>
     );

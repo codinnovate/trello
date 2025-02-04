@@ -1,3 +1,5 @@
+'use client';
+
 import AddNewItem from "@/components/AddNewItem";
 import Column from "@/components/Column";
 import { useAppContext } from "@/contexts/app-context";
