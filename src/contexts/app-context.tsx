@@ -24,7 +24,7 @@ const appData: AppState = {
 
 const initialState = {
     lists:[],
-    getTasksByListid(id: string): TaskProps
+    getTasksByListid(id: string): TaskProps[]
 }
 
 const AppStateContext = createContext<AppContextProps>(initialState);
